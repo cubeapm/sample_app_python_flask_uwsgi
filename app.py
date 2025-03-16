@@ -1,6 +1,7 @@
 import requests
 import socket
 import time
+# import logging
 from flask_sqlalchemy import SQLAlchemy
 from flaskapp import create_app
 from celery.result import AsyncResult
@@ -8,9 +9,17 @@ from celery_tasks import task_sum
 from kafka import KafkaProducer, KafkaConsumer
 from redis import Redis, asyncio as aioredis
 from uwsgidecorators import postfork
+from elasticapm.contrib.flask import ElasticAPM
 
 
 app = create_app()
+apm = ElasticAPM(app)
+
+# If using ELASTIC_APM_LOG_FILE to check agent debug logs, 
+# The following may need to be uncommented to see the logs.
+
+# logging.basicConfig()
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@mysql/test'
 
 db = SQLAlchemy(app)
