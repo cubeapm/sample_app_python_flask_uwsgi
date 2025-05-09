@@ -1,6 +1,7 @@
 import requests
 import socket
 import time
+import newrelic.agent
 from flask_sqlalchemy import SQLAlchemy
 from flaskapp import create_app
 from celery.result import AsyncResult
@@ -11,6 +12,7 @@ from uwsgidecorators import postfork
 
 
 app = create_app()
+newrelic.agent.initialize()
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@mysql/test'
 
 db = SQLAlchemy(app)

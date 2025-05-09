@@ -1,3 +1,27 @@
+# New Relic Instrumentation
+
+This branch contains code for New Relic instrumentation.
+
+CubeAPM works with New Relic agents as described in [using CubeAPM with New Relic agents](https://docs.cubeapm.com/instrumentation#using-cubeapm-with-new-relic-agents).
+
+For testing, **ngrok** can be used in place of load balancer. Run `ngrok http 3130` to create a tunnel and use the domain name provided by ngrok to set `NEW_RELIC_HOST=xxxx.ngrok-free.app` in [docker-compose.yml](docker-compose.yml).
+
+Refer the project README below for more details.
+
+## Troubleshooting
+
+If the app does not show up in CubeAPM after integration is done, add the below environment variables to check New Relic agent logs.
+
+```shell
+# Print New Relic agent logs on screen
+NEW_RELIC_LOG=stdout
+
+# Set New Relic agent log level to debug if needed to see detailed logs
+#NEW_RELIC_LOG_LEVEL=debug
+```
+
+---
+
 # Python Flask uWSGI Instrumentation
 
 This is a sample app to demonstrate how to instrument Python Flask uWSGI app with **Datadog**, **Elastic**, **New Relic** and **OpenTelemetry**. It contains source code for the Flask app which interacts with various services like Redis, MySQL, Kafka, etc. to demonstrate tracing for these services. This repository has a docker compose file to set up all these services conveniently.
