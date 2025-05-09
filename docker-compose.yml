@@ -4,7 +4,7 @@ services:
     build:
       context: .
     container_name: cube_python_flask_uwsgi_flask
-    environment:  
+    environment:
       - DD_SERVICE=cube_sample_python_flask_uwsgi_datadog
       # send traces to CubeAPM
       - DD_TRACE_AGENT_URL=http://host.docker.internal:3130
@@ -32,7 +32,7 @@ services:
     command:
       ["celery", "-A", "celeryapp.celery_app", "worker", "--loglevel=info"]
     container_name: cube_python_flask_uwsgi_celery
-    environment:  
+    environment:
       - DD_SERVICE=cube_sample_python_flask_uwsgi_datadog
       # send traces to CubeAPM
       - DD_TRACE_AGENT_URL=http://host.docker.internal:3130
