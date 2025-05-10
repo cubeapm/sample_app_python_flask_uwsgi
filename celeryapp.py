@@ -13,3 +13,6 @@ celery_app = flask_app.extensions["celery"]
 def init_celery_tracing(*args, **kwargs):
     init_tracing()
     CeleryInstrumentor().instrument()
+    # Additional instrumentation can be enabled by
+    # following the docs for respective instrumentations at
+    # https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation
