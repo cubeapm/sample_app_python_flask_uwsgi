@@ -6,6 +6,7 @@ import newrelic.agent
 flask_app = create_app()
 celery_app = flask_app.extensions["celery"]
 
+
 @worker_process_init.connect(weak=False)
 def init_celery_tracing(*args, **kwargs):
     newrelic.agent.initialize()
